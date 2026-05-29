@@ -40,6 +40,8 @@ export default defineConfig(({ command }) => {
             '@mui/icons-material',
             '@emotion/react',
             '@emotion/styled',
+            'react-router-dom',
+            'react-helmet-async',
           ],
           output: {
             preserveModules: false,
