@@ -2,7 +2,7 @@ var Ei = Object.defineProperty;
 var Ti = (e, t, r) => t in e ? Ei(e, t, { enumerable: !0, configurable: !0, writable: !0, value: r }) : e[t] = r;
 var Ge = (e, t, r) => Ti(e, typeof t != "symbol" ? t + "" : t, r);
 import { AI4U_PALETTE as v, TEXT_VARIANTS as re, TYPOGRAPHY_TOKENS as Q, SHADOW_TOKENS as at, SURFACE_PRESETS as ht, CONTRAST_PAIRS as Ii, useComponentColors as Ri, BREAKPOINT_TOKENS as Hr } from "./tokens/index.js";
-import { AI4U_DESIGN_TOKENS as $h, BORDER_TOKENS as Ah, COMPONENT_SPACING as _h, COMPONENT_VARIANTS as Oh, SPACING_TOKENS as Mh, TRANSITION_TOKENS as Ph, TYPOGRAPHY_UTILITIES as zh, Z_INDEX_TOKENS as Dh, createAI4UTokens as Fh, useContrastColors as Nh } from "./tokens/index.js";
+import { AI4U_DESIGN_TOKENS as Ah, BORDER_TOKENS as _h, COMPONENT_SPACING as Oh, COMPONENT_VARIANTS as Mh, SPACING_TOKENS as Ph, TRANSITION_TOKENS as zh, TYPOGRAPHY_UTILITIES as Dh, Z_INDEX_TOKENS as Fh, createAI4UTokens as Nh, useContrastColors as Lh } from "./tokens/index.js";
 import { jsxs as m, jsx as i, Fragment as be } from "react/jsx-runtime";
 import { styled as Ie, Button as et, Box as u, Typography as F, useTheme as Se, Container as Xe, Stack as he, Skeleton as ne, useMediaQuery as cr, Menu as ca, MenuItem as or, Link as da, keyframes as $i, Fab as Ai, Dialog as _i, DialogTitle as Oi, IconButton as Ne, alpha as we, DialogContent as Mi, Paper as Vt, CircularProgress as Pi, TextField as ua, Card as wn, CardContent as Yt, Avatar as so, Chip as It, Divider as Sr, Alert as zi, AlertTitle as Di, Collapse as Fi, Grid as $e, Tabs as Ni, Tab as Li, TableContainer as Wi, Table as Bi, TableHead as ji, TableRow as lo, TableCell as Ye, TableBody as Vi, AppBar as Hi, Toolbar as Ui } from "@mui/material";
 import * as w from "react";
@@ -5357,16 +5357,18 @@ class Ad {
   }
   // Tracking de pageviews mejorado
   trackPageView(t, r) {
-    var n;
-    if (this.isGALoaded)
+    var o;
+    if (!this.isGALoaded) return;
+    const n = window.__AI4U_GA_ID__;
+    if (n)
       try {
-        (n = window.gtag) == null || n.call(window, "config", "G-44D5SE9KCR", {
+        (o = window.gtag) == null || o.call(window, "config", n, {
           page_title: `${t} | AI4U`,
           page_location: window.location.href,
           ...r
         }), ue.log(`📊 Page view tracked: ${t}`);
-      } catch (o) {
-        ue.error("Error tracking page view:", o);
+      } catch (a) {
+        ue.error("Error tracking page view:", a);
       }
   }
   // Métricas de tiempo de permanencia
@@ -5386,6 +5388,9 @@ class Ad {
   }
 }
 const ei = new Ad();
+function vf(e) {
+  typeof window > "u" || !e || (window.__AI4U_GA_ID__ = e);
+}
 class _d {
   constructor() {
     Ge(this, "sessionId");
@@ -5731,7 +5736,7 @@ const Od = new _d(), Md = (e, t = {}) => {
   if (e === void 0)
     throw new Error("useLoading must be used within a LoadingProvider");
   return e;
-}, vf = ({ images: e, onAllLoaded: t }) => {
+}, Sf = ({ images: e, onAllLoaded: t }) => {
   const { setCriticalImagesLoaded: r } = ti();
   return me(() => {
     let n = 0;
@@ -5745,7 +5750,7 @@ const Od = new _d(), Md = (e, t = {}) => {
       c.onload = a, c.onerror = s, c.src = l;
     }), o === 0 && (r(!0), t == null || t());
   }, [e, r, t]), null;
-}, Sf = () => {
+}, wf = () => {
   const e = Se();
   return /* @__PURE__ */ i(
     u,
@@ -5919,7 +5924,7 @@ const Od = new _d(), Md = (e, t = {}) => {
       ]
     }
   );
-}, wf = ({
+}, Cf = ({
   src: e,
   pixelArtSrc: t,
   alt: r,
@@ -5990,7 +5995,7 @@ const Od = new _d(), Md = (e, t = {}) => {
       )
     }
   );
-}, Cf = ({
+}, kf = ({
   src: e,
   alt: t,
   width: r = "100%",
@@ -6430,7 +6435,7 @@ const ri = (e) => {
     /* @__PURE__ */ i("meta", { property: "twitter:site", content: "@ai4u_co" }),
     c && /* @__PURE__ */ i("script", { type: "application/ld+json", children: JSON.stringify(c) })
   ] });
-}, kf = (e = {}) => {
+}, Ef = (e = {}) => {
   const {
     title: t = "AI4U - Inteligencia Artificial para tu Negocio",
     description: r = "Soluciones de Inteligencia Artificial personalizadas para tu negocio.",
@@ -6468,7 +6473,7 @@ const ri = (e) => {
       site: "@ai4u_co"
     }
   };
-}, Ef = ({
+}, Tf = ({
   src: e,
   alt: t,
   width: r,
@@ -6522,7 +6527,7 @@ const ri = (e) => {
       }
     )
   ] });
-}, Tf = ({
+}, If = ({
   imageName: e,
   alt: t,
   width: r = "100%",
@@ -6620,7 +6625,7 @@ const ri = (e) => {
       ]
     }
   );
-}, If = ({
+}, Rf = ({
   criticalImages: e,
   importantImages: t,
   backgroundImages: r,
@@ -6804,7 +6809,7 @@ const ri = (e) => {
       }
     }
   );
-}, Rf = ({
+}, $f = ({
   serviceId: e,
   serviceColor: t,
   size: r = "medium",
@@ -6978,7 +6983,7 @@ const ri = (e) => {
       ]
     }
   );
-}, $f = ({
+}, Af = ({
   children: e,
   numberVariant: t = "primary",
   sx: r,
@@ -7172,7 +7177,7 @@ const ri = (e) => {
       children: jd[e] ?? null
     }
   );
-}, Af = ({
+}, _f = ({
   logo: e,
   title: t,
   subtitle: r,
@@ -7534,7 +7539,7 @@ const Kd = async (e, t) => {
 }, Xd = () => `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`, Zo = (e) => {
   const t = e.toLowerCase();
   return t.includes("hola") || t.includes("buenos días") || t.includes("buenas") ? "¡Hola! Soy el asistente virtual de AI4U. ¿En qué puedo ayudarte hoy?" : t.includes("servicios") || t.includes("qué hacen") || t.includes("qué ofrecen") ? "En AI4U ofrecemos servicios de inteligencia artificial personalizada, automatización de procesos, análisis de datos y consultoría en IA. ¿Te gustaría conocer más sobre alguno de nuestros servicios?" : t.includes("precio") || t.includes("costo") || t.includes("tarifa") ? "Nuestros precios varían según el proyecto y las necesidades específicas. Te recomiendo solicitar un diagnóstico gratuito para que podamos evaluar tu caso y darte una propuesta personalizada." : t.includes("contacto") || t.includes("teléfono") || t.includes("email") ? "Puedes contactarnos a través de nuestro formulario de diagnóstico gratuito o escribirnos directamente. Nuestro equipo te responderá en menos de 24 horas." : t.includes("diagnóstico") || t.includes("gratuito") ? "¡Excelente! Nuestro diagnóstico gratuito te ayudará a identificar oportunidades de mejora en tu empresa usando IA. Solo toma 30 minutos y no hay compromiso. ¿Te gustaría agendar una cita?" : "Gracias por tu mensaje. Nuestro equipo de AI4U se pondrá en contacto contigo pronto para ayudarte con tu consulta. Mientras tanto, puedes explorar nuestros servicios o solicitar un diagnóstico gratuito.";
-}, _f = () => {
+}, Of = () => {
   const e = Se(), t = cr(e.breakpoints.down("sm")), [r, n] = H(!1), [o] = H(() => Xd()), [a, s] = H([
     {
       id: "1",
@@ -9346,7 +9351,7 @@ function vp(e, { relative: t } = {}) {
 }
 const Sp = Oe(/* @__PURE__ */ i("path", {
   d: "M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2m-6 0h-4V4h4z"
-}), "Work"), Of = ({
+}), "Work"), Mf = ({
   variant: e = "primary",
   size: t = "medium",
   showIcon: r = !1,
@@ -9467,7 +9472,7 @@ const Sp = Oe(/* @__PURE__ */ i("path", {
       ]
     }
   );
-}, Mf = ({
+}, Pf = ({
   title: e,
   subtitle: t = "",
   transactions: r,
@@ -9752,7 +9757,7 @@ const Sp = Oe(/* @__PURE__ */ i("path", {
   [t.breakpoints.down("xs")]: {
     fontSize: e === "small" ? "1.3rem" : e === "large" ? "2.5rem" : "2rem"
   }
-})), Pf = ({
+})), zf = ({
   number: e,
   title: t,
   description: r,
@@ -9883,7 +9888,7 @@ const Sp = Oe(/* @__PURE__ */ i("path", {
       transform: "translateX(4px)"
     }
   };
-}), zf = ({
+}), Df = ({
   title: e,
   subtitle: t = "",
   categories: r,
@@ -9999,7 +10004,7 @@ const Sp = Oe(/* @__PURE__ */ i("path", {
   top: 10,
   left: 10,
   opacity: 0.5
-})), Df = (e) => {
+})), Ff = (e) => {
   const {
     title: t,
     value: r,
@@ -10169,7 +10174,7 @@ const Ap = `https://${$p.CONTACT.CALENDLY}`, Zn = ({
     sx: a,
     children: n || "Diagnóstico gratis"
   }
-), Ff = () => ({
+), Nf = () => ({
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "AI4U",
@@ -10180,7 +10185,7 @@ const Ap = `https://${$p.CONTACT.CALENDLY}`, Zn = ({
     target: "https://www.ai4u.com.co/servicios?q={search_term_string}",
     "query-input": "required name=search_term_string"
   }
-}), Nf = () => ({
+}), Lf = () => ({
   "@context": "https://schema.org",
   "@type": "ItemList",
   name: "Servicios de Inteligencia Artificial",
@@ -10238,7 +10243,7 @@ const Ap = `https://${$p.CONTACT.CALENDLY}`, Zn = ({
     priceCurrency: "COP",
     availability: "https://schema.org/InStock"
   }
-}), Lf = () => ({
+}), Wf = () => ({
   "@context": "https://schema.org",
   "@type": "ItemList",
   name: "Casos de Uso de IA",
@@ -10264,7 +10269,7 @@ const Ap = `https://${$p.CONTACT.CALENDLY}`, Zn = ({
       description: "IA para mejorar eficiencia operacional"
     }
   ]
-}), Wf = (e) => ({
+}), Bf = (e) => ({
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: e.map((t) => ({
@@ -10284,7 +10289,7 @@ const Ap = `https://${$p.CONTACT.CALENDLY}`, Zn = ({
     name: t.name,
     item: t.url
   }))
-}), Bf = (e) => {
+}), jf = (e) => {
   const t = {
     home: {
       title: "AI4U - Recupera tu Tiempo con Equipos de Agentes de IA",
@@ -10308,7 +10313,7 @@ const Ap = `https://${$p.CONTACT.CALENDLY}`, Zn = ({
     }
   };
   return t[e] || t.home;
-}, jf = (e = "") => `https://www.ai4u.com.co${e}`, Vf = (e, t = 160) => e.length <= t ? e : e.substring(0, t - 3) + "...", Hf = (e, t = []) => [...e, ...t].join(", "), Uf = ({
+}, Vf = (e = "") => `https://www.ai4u.com.co${e}`, Hf = (e, t = 160) => e.length <= t ? e : e.substring(0, t - 3) + "...", Uf = (e, t = []) => [...e, ...t].join(", "), Gf = ({
   service: e,
   showPrice: t = !0,
   compact: r = !1,
@@ -10463,7 +10468,7 @@ const Ap = `https://${$p.CONTACT.CALENDLY}`, Zn = ({
       }
     ) })
   ] });
-}, Gf = ({
+}, Yf = ({
   items: e,
   showHome: t = !0
 }) => {
@@ -10540,7 +10545,7 @@ const Ap = `https://${$p.CONTACT.CALENDLY}`, Zn = ({
     )
   ] });
 };
-class Yf extends Yi {
+class qf extends Yi {
   constructor(r) {
     super(r);
     Ge(this, "handleRetry", () => {
@@ -10629,7 +10634,7 @@ class Yf extends Yi {
     ) }) : this.props.children;
   }
 }
-const qf = (e) => {
+const Kf = (e) => {
   const {
     pages: t,
     title: r,
@@ -10722,7 +10727,7 @@ const qf = (e) => {
       ]
     }
   );
-}, Kf = (e) => {
+}, Xf = (e) => {
   const {
     serviceName: t,
     serviceSlug: r,
@@ -10826,7 +10831,7 @@ const qf = (e) => {
       ] })
     }
   );
-}, Xf = ({
+}, Jf = ({
   selectedValue: e,
   onValueChange: t,
   options: r
@@ -10869,7 +10874,7 @@ const qf = (e) => {
       a
     )) })
   ] });
-}, Jf = ({
+}, Qf = ({
   totalCount: e,
   filteredCount: t,
   activeFilters: r
@@ -10900,7 +10905,7 @@ const qf = (e) => {
       ] })
     ] })
   ] }) });
-}, Qf = ({
+}, Zf = ({
   title: e,
   subtitle: t,
   children: r,
@@ -11000,7 +11005,7 @@ const qf = (e) => {
       borderTop: l ? `1px solid ${p ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.1)"}` : "none"
     }, children: r }) })
   ] });
-}, Zf = ({
+}, eh = ({
   summary: e,
   details: t,
   showDetails: r = !1,
@@ -11091,7 +11096,7 @@ function Nt(e, t) {
   const r = parseInt(e.slice(1, 3), 16), n = parseInt(e.slice(3, 5), 16), o = parseInt(e.slice(5, 7), 16);
   return `rgba(${r},${n},${o},${t})`;
 }
-const eh = ({
+const th = ({
   name: e,
   description: t,
   icon: r,
@@ -11237,7 +11242,7 @@ const eh = ({
       ]
     }
   );
-}, th = ({
+}, rh = ({
   branding: e,
   label: t = "Acceso restringido",
   placeholder: r = "Contraseña",
@@ -11366,7 +11371,7 @@ const eh = ({
     ),
     l && /* @__PURE__ */ i(u, { sx: { textAlign: "center", mt: 2.5 }, children: l })
   ] });
-}, rh = ({
+}, nh = ({
   items: e,
   activeItem: t,
   onItemClick: r,
@@ -11664,7 +11669,7 @@ const eh = ({
       ] })
     }
   );
-}, nh = ({
+}, oh = ({
   customTitle: e = "Tu tiempo es oro",
   customSubtitle: t = "IA que potencia tu productividad.",
   primaryButtonText: r = "Recupera tu tiempo",
@@ -11896,7 +11901,7 @@ const eh = ({
       ]
     }
   );
-}, oh = ({
+}, ah = ({
   data: e,
   date: t,
   time: r,
@@ -12196,7 +12201,7 @@ const eh = ({
       ] })
     }
   );
-}, ah = ({
+}, ih = ({
   data: e,
   variant: t = "elevated",
   showLocationIcon: r = !1,
@@ -12440,7 +12445,7 @@ const eh = ({
       ] })
     }
   );
-}, ih = ({
+}, sh = ({
   searchValue: e,
   onSearchChange: t,
   selectedTab: r,
@@ -12583,7 +12588,7 @@ const eh = ({
       }
     ) })
   ] });
-}, sh = ({ stats: e, getCategories: t }) => {
+}, lh = ({ stats: e, getCategories: t }) => {
   const r = Se(), n = [
     {
       value: e.total,
@@ -12712,7 +12717,7 @@ const eh = ({
       /* @__PURE__ */ i(Ye, { children: r.defaultValue ? /* @__PURE__ */ i(Ke, { children: r.defaultValue }) : /* @__PURE__ */ i(u, { sx: { color: t.palette.text.disabled }, children: "-" }) })
     ] }, n)) })
   ] }) });
-}, lh = ({
+}, ch = ({
   title: e,
   description: t,
   children: r,
@@ -12793,7 +12798,7 @@ const eh = ({
   padding: e.spacing(3),
   position: "relative",
   minHeight: 320
-})), ch = ({
+})), dh = ({
   rotationAngle: e = 35,
   brightness: t = 30,
   shadowDensity: r = 25
@@ -13375,7 +13380,7 @@ const eh = ({
   "automatizaciones.",
   "conexión con",
   "tus sistemas."
-], dh = ({
+], uh = ({
   badge: e = "ai4u // siempre activo",
   lines: t = Qp,
   primaryButtonText: r = "hablar con el equipo"
@@ -13520,7 +13525,7 @@ const eh = ({
   "/assets/images/hero-image.png",
   "/assets/images/hero-image2.png",
   "/assets/images/hero-image3.png"
-], Zp = ["agentes", "entrenamiento", "automatizaciones"], uh = ({
+], Zp = ["agentes", "entrenamiento", "automatizaciones"], ph = ({
   badge: e = "ai4u.equipo // siempre activo",
   primaryButtonText: t = "hablar con el equipo"
 }) => {
@@ -13702,7 +13707,7 @@ const eh = ({
       zIndex: 3
     } })
   ] });
-}, ph = ({
+}, fh = ({
   label: e,
   body: t,
   pillars: r,
@@ -13826,7 +13831,7 @@ const eh = ({
       ]
     }
   );
-}, fh = ({
+}, hh = ({
   logo: e,
   title: t,
   subtitle: r,
@@ -13890,7 +13895,7 @@ const eh = ({
       ]
     }
   );
-}, hh = ({
+}, mh = ({
   branding: e,
   statusBadge: t,
   groups: r,
@@ -14209,7 +14214,7 @@ const eh = ({
       ]
     }
   );
-}, mh = ({ children: e }) => /* @__PURE__ */ m(u, { sx: { display: "flex", flexDirection: "column", minHeight: "100vh" }, children: [
+}, gh = ({ children: e }) => /* @__PURE__ */ m(u, { sx: { display: "flex", flexDirection: "column", minHeight: "100vh" }, children: [
   /* @__PURE__ */ i(Nd, {}),
   /* @__PURE__ */ i(Jp, {}),
   /* @__PURE__ */ i(
@@ -14291,10 +14296,10 @@ const eh = ({
       ] })
     }
   );
-}, gh = ({
+}, yh = ({
   children: e,
   fallback: t = /* @__PURE__ */ i(ef, {})
-}) => /* @__PURE__ */ i(qi, { fallback: t, children: e }), yh = () => {
+}) => /* @__PURE__ */ i(qi, { fallback: t, children: e }), xh = () => {
   const { pathname: e, hash: t } = Je();
   return me(() => {
     if (t) {
@@ -14314,125 +14319,6 @@ const eh = ({
         behavior: "smooth"
       });
   }, [e, t]), null;
-}, xh = ({ children: e }) => {
-  const [t, r] = H(!0), n = Se(), o = _e(() => [
-    "/assets/images/hero-image.png",
-    "/assets/images/hero-image2.png",
-    "/assets/images/hero-image3.png",
-    "/assets/images/ai4u-logo.png",
-    "/assets/images/ai4u-logo-dark.png"
-  ], []);
-  return me(() => {
-    let a = 0;
-    const s = o.length, l = () => {
-      a++, a === s && setTimeout(() => {
-        r(!1);
-      }, 500);
-    }, c = () => {
-      a++, a === s && setTimeout(() => {
-        r(!1);
-      }, 500);
-    };
-    o.forEach((d) => {
-      const p = new Image();
-      p.onload = l, p.onerror = c, p.src = d;
-    }), s === 0 && setTimeout(() => {
-      r(!1);
-    }, 500);
-  }, [o]), t ? /* @__PURE__ */ i(
-    u,
-    {
-      sx: {
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        zIndex: 9999,
-        bgcolor: "background.paper",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        transition: "opacity 0.5s ease-in-out"
-      },
-      children: /* @__PURE__ */ i(Xe, { maxWidth: "lg", children: /* @__PURE__ */ m(he, { spacing: 4, sx: { alignItems: "center" }, children: [
-        /* @__PURE__ */ i(u, { sx: { mb: 4 }, children: /* @__PURE__ */ i(Rt, {}) }),
-        /* @__PURE__ */ i(u, { sx: { width: "100%", maxWidth: 600 }, children: /* @__PURE__ */ i(
-          ne,
-          {
-            variant: "rectangular",
-            height: 400,
-            sx: {
-              borderRadius: 2,
-              bgcolor: n.palette.mode === "dark" ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)"
-            }
-          }
-        ) }),
-        /* @__PURE__ */ m(he, { spacing: 2, sx: { width: "100%", maxWidth: 500 }, children: [
-          /* @__PURE__ */ i(
-            ne,
-            {
-              variant: "text",
-              height: 40,
-              width: "80%",
-              sx: {
-                bgcolor: n.palette.mode === "dark" ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)"
-              }
-            }
-          ),
-          /* @__PURE__ */ i(
-            ne,
-            {
-              variant: "text",
-              height: 24,
-              width: "60%",
-              sx: {
-                bgcolor: n.palette.mode === "dark" ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)"
-              }
-            }
-          ),
-          /* @__PURE__ */ i(
-            ne,
-            {
-              variant: "text",
-              height: 24,
-              width: "70%",
-              sx: {
-                bgcolor: n.palette.mode === "dark" ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)"
-              }
-            }
-          )
-        ] }),
-        /* @__PURE__ */ m(he, { direction: "row", spacing: 2, children: [
-          /* @__PURE__ */ i(
-            ne,
-            {
-              variant: "rectangular",
-              height: 48,
-              width: 160,
-              sx: {
-                borderRadius: 2,
-                bgcolor: n.palette.mode === "dark" ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)"
-              }
-            }
-          ),
-          /* @__PURE__ */ i(
-            ne,
-            {
-              variant: "rectangular",
-              height: 48,
-              width: 160,
-              sx: {
-                borderRadius: 2,
-                bgcolor: n.palette.mode === "dark" ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)"
-              }
-            }
-          )
-        ] })
-      ] }) })
-    }
-  ) : /* @__PURE__ */ i("div", { style: { opacity: t ? 0 : 1, transition: "opacity 0.5s ease-in-out" }, children: e });
 }, bh = ({ children: e }) => {
   const [t, r] = H(!0), n = Se(), o = _e(() => [
     "/assets/images/hero-image.png",
@@ -14553,6 +14439,125 @@ const eh = ({
     }
   ) : /* @__PURE__ */ i("div", { style: { opacity: t ? 0 : 1, transition: "opacity 0.5s ease-in-out" }, children: e });
 }, vh = ({ children: e }) => {
+  const [t, r] = H(!0), n = Se(), o = _e(() => [
+    "/assets/images/hero-image.png",
+    "/assets/images/hero-image2.png",
+    "/assets/images/hero-image3.png",
+    "/assets/images/ai4u-logo.png",
+    "/assets/images/ai4u-logo-dark.png"
+  ], []);
+  return me(() => {
+    let a = 0;
+    const s = o.length, l = () => {
+      a++, a === s && setTimeout(() => {
+        r(!1);
+      }, 500);
+    }, c = () => {
+      a++, a === s && setTimeout(() => {
+        r(!1);
+      }, 500);
+    };
+    o.forEach((d) => {
+      const p = new Image();
+      p.onload = l, p.onerror = c, p.src = d;
+    }), s === 0 && setTimeout(() => {
+      r(!1);
+    }, 500);
+  }, [o]), t ? /* @__PURE__ */ i(
+    u,
+    {
+      sx: {
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 9999,
+        bgcolor: "background.paper",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        transition: "opacity 0.5s ease-in-out"
+      },
+      children: /* @__PURE__ */ i(Xe, { maxWidth: "lg", children: /* @__PURE__ */ m(he, { spacing: 4, sx: { alignItems: "center" }, children: [
+        /* @__PURE__ */ i(u, { sx: { mb: 4 }, children: /* @__PURE__ */ i(Rt, {}) }),
+        /* @__PURE__ */ i(u, { sx: { width: "100%", maxWidth: 600 }, children: /* @__PURE__ */ i(
+          ne,
+          {
+            variant: "rectangular",
+            height: 400,
+            sx: {
+              borderRadius: 2,
+              bgcolor: n.palette.mode === "dark" ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)"
+            }
+          }
+        ) }),
+        /* @__PURE__ */ m(he, { spacing: 2, sx: { width: "100%", maxWidth: 500 }, children: [
+          /* @__PURE__ */ i(
+            ne,
+            {
+              variant: "text",
+              height: 40,
+              width: "80%",
+              sx: {
+                bgcolor: n.palette.mode === "dark" ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)"
+              }
+            }
+          ),
+          /* @__PURE__ */ i(
+            ne,
+            {
+              variant: "text",
+              height: 24,
+              width: "60%",
+              sx: {
+                bgcolor: n.palette.mode === "dark" ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)"
+              }
+            }
+          ),
+          /* @__PURE__ */ i(
+            ne,
+            {
+              variant: "text",
+              height: 24,
+              width: "70%",
+              sx: {
+                bgcolor: n.palette.mode === "dark" ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)"
+              }
+            }
+          )
+        ] }),
+        /* @__PURE__ */ m(he, { direction: "row", spacing: 2, children: [
+          /* @__PURE__ */ i(
+            ne,
+            {
+              variant: "rectangular",
+              height: 48,
+              width: 160,
+              sx: {
+                borderRadius: 2,
+                bgcolor: n.palette.mode === "dark" ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)"
+              }
+            }
+          ),
+          /* @__PURE__ */ i(
+            ne,
+            {
+              variant: "rectangular",
+              height: 48,
+              width: 160,
+              sx: {
+                borderRadius: 2,
+                bgcolor: n.palette.mode === "dark" ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)"
+              }
+            }
+          )
+        ] })
+      ] }) })
+    }
+  ) : /* @__PURE__ */ i("div", { style: { opacity: t ? 0 : 1, transition: "opacity 0.5s ease-in-out" }, children: e });
+}, Sh = ({ children: e }) => {
   const [t, r] = H(!0), n = Se();
   return me(() => {
     const o = [
@@ -14672,7 +14677,7 @@ const eh = ({
       ] }) })
     }
   ) : /* @__PURE__ */ i("div", { style: { opacity: t ? 0 : 1, transition: "opacity 0.5s ease-in-out" }, children: e });
-}, Sh = ({ children: e }) => /* @__PURE__ */ i(be, { children: e }), wh = ({
+}, wh = ({ children: e }) => /* @__PURE__ */ i(be, { children: e }), Ch = ({
   children: e,
   title: t,
   subtitle: r,
@@ -14735,7 +14740,7 @@ const eh = ({
     ] }) }) }),
     /* @__PURE__ */ i(u, { component: "main", sx: { display: "flex", flexDirection: "column" }, children: e })
   ] });
-}, Ch = ({
+}, kh = ({
   children: e,
   title: t,
   description: r,
@@ -14784,7 +14789,7 @@ const eh = ({
     ] }),
     e
   ] });
-}, kh = ({
+}, Eh = ({
   children: e,
   className: t = "",
   maxWidth: r = "xl",
@@ -14812,7 +14817,7 @@ const eh = ({
     className: t,
     children: e
   }
-), Eh = ({
+), Th = ({
   children: e,
   cols: t = 1,
   gap: r = "lg",
@@ -14851,7 +14856,7 @@ const eh = ({
       s
     ))
   }
-), Th = ({
+), Ih = ({
   children: e,
   spacing: t = "md",
   className: r = ""
@@ -14878,123 +14883,125 @@ const eh = ({
 );
 var tf = /* @__PURE__ */ ((e) => (e.OPERATION = "operation", e.STRATEGY = "strategy", e.EDUCATION = "education", e.TRANSFORMATION = "transformation", e))(tf || {}), rf = /* @__PURE__ */ ((e) => (e.AUTOMATION = "automation", e.AI_ASSISTANT = "ai_assistant", e.ANALYTICS = "analytics", e.ECOMMERCE = "ecommerce", e.TRAINING = "training", e.CONSULTING = "consulting", e))(rf || {}), nf = /* @__PURE__ */ ((e) => (e.ACTIVE = "active", e.INACTIVE = "inactive", e.COMING_SOON = "coming_soon", e.DEPRECATED = "deprecated", e))(nf || {});
 export {
-  $h as AI4U_DESIGN_TOKENS,
+  Ah as AI4U_DESIGN_TOKENS,
   v as AI4U_PALETTE,
-  th as AuthCard,
-  Ah as BORDER_TOKENS,
+  rh as AuthCard,
+  _h as BORDER_TOKENS,
   Hr as BREAKPOINT_TOKENS,
-  Sh as BasicLoadingWrapper,
+  wh as BasicLoadingWrapper,
   Re as BodyText,
-  Af as Branding,
-  Gf as Breadcrumb,
-  zf as BudgetCard,
+  _f as Branding,
+  Yf as Breadcrumb,
+  Df as BudgetCard,
   kn as Button,
-  _h as COMPONENT_SPACING,
-  Oh as COMPONENT_VARIANTS,
+  Oh as COMPONENT_SPACING,
+  Mh as COMPONENT_VARIANTS,
   Ii as CONTRAST_PAIRS,
   jr as Card,
-  _f as ChatButton,
+  Of as ChatButton,
   Ke as CodeText,
   Za as ColorModeContext,
-  kh as Container,
+  Eh as Container,
   jt as ContextualLink,
   yr as DashboardIcon,
-  hh as DashboardSidebar,
-  fh as DashboardTopBar,
+  mh as DashboardSidebar,
+  hh as DashboardTopBar,
   Zn as DiagnosticCTA,
-  lh as Documentation,
-  Yf as ErrorBoundary,
-  Qf as ExpandableSection,
-  Jf as FilterStats,
+  ch as Documentation,
+  qf as ErrorBoundary,
+  Zf as ExpandableSection,
+  Qf as FilterStats,
   Bp as Footer,
   mr as GeometricIcon,
   ys as Giant,
-  $f as GiantNumber,
+  Af as GiantNumber,
   Nd as GoogleTranslateProvider,
   Qo as GoogleTranslateWidget,
-  Eh as Grid,
+  Th as Grid,
   En as H1,
   ha as H2,
   Kt as H3,
   Ae as H4,
   ff as H5,
   hf as H6,
-  uh as HeroFullscreen,
-  nh as HeroSection,
-  vf as ImagePreloader,
-  If as IntelligentImagePreloader,
-  mh as Layout,
+  ph as HeroFullscreen,
+  oh as HeroSection,
+  Sf as ImagePreloader,
+  Rf as IntelligentImagePreloader,
+  gh as Layout,
   jn as LazyImage,
-  gh as LazyPage,
-  Sf as LoadingScreen,
-  bh as LoadingWrapper,
+  yh as LazyPage,
+  wf as LoadingScreen,
+  vh as LoadingWrapper,
   Rt as Logo,
-  Df as MetricCard,
-  ch as ModelingInterface,
-  eh as ModuleCard,
+  Ff as MetricCard,
+  dh as ModelingInterface,
+  th as ModuleCard,
   Jp as Navbar,
-  rh as Navigation,
+  nh as Navigation,
   Wd as NavigationDot,
-  Ef as OptimizedImage,
-  Tf as OptimizedImageAdvanced,
-  wh as PageLayout,
-  Cf as PixelArtFilter,
-  wf as PixelArtImage,
-  Pf as ProcessStep,
-  Zf as ProgressiveContent,
-  qf as RelatedPages,
+  Tf as OptimizedImage,
+  If as OptimizedImageAdvanced,
+  Ch as PageLayout,
+  kf as PixelArtFilter,
+  Cf as PixelArtImage,
+  zf as ProcessStep,
+  eh as ProgressiveContent,
+  Kf as RelatedPages,
   ri as SEOHead,
   at as SHADOW_TOKENS,
-  Mh as SPACING_TOKENS,
+  Ph as SPACING_TOKENS,
   ht as SURFACE_PRESETS,
-  dh as ScrollRevealHero,
-  yh as ScrollToTop,
-  Ch as Section,
-  Uf as ServiceCard,
+  uh as ScrollRevealHero,
+  xh as ScrollToTop,
+  kh as Section,
+  Gf as ServiceCard,
   rf as ServiceCategory,
-  Kf as ServiceCrossLink,
+  Xf as ServiceCrossLink,
   nf as ServiceStatus,
   tf as ServiceSuperCategory,
-  Rf as ServiceThumbnail,
-  Of as ServicesButton,
-  ih as ServicesFilter,
-  sh as ServicesStats,
-  xh as SimpleAppWrapper,
-  vh as SimpleLoadingWrapper,
-  oh as SleepWidget,
+  $f as ServiceThumbnail,
+  Mf as ServicesButton,
+  sh as ServicesFilter,
+  lh as ServicesStats,
+  bh as SimpleAppWrapper,
+  Sh as SimpleLoadingWrapper,
+  ah as SleepWidget,
   de as SmallText,
-  Th as Stack,
+  Ih as Stack,
   vn as StatusDot,
-  Xf as SuperCategoryFilter,
+  Jf as SuperCategoryFilter,
   yf as SurfaceProvider,
   re as TEXT_VARIANTS,
-  Ph as TRANSITION_TOKENS,
+  zh as TRANSITION_TOKENS,
   Q as TYPOGRAPHY_TOKENS,
-  zh as TYPOGRAPHY_UTILITIES,
+  Dh as TYPOGRAPHY_UTILITIES,
   gf as ThemeProvider,
-  Mf as TransactionCard,
+  Pf as TransactionCard,
   mf as Typography,
   mf as TypographyWrapper,
-  ph as VisionBanner,
-  ah as WeatherWidget,
-  Dh as Z_INDEX_TOKENS,
-  kf as buildSEOMetadata,
-  Vf as cleanMetaDescription,
-  Fh as createAI4UTokens,
-  Hf as generateKeywords,
+  fh as VisionBanner,
+  ih as WeatherWidget,
+  Fh as Z_INDEX_TOKENS,
+  ei as analytics,
+  Ef as buildSEOMetadata,
+  Hf as cleanMetaDescription,
+  Nh as createAI4UTokens,
+  Uf as generateKeywords,
   Op as getBreadcrumbStructuredData,
-  jf as getCanonicalUrl,
-  Wf as getFAQStructuredData,
-  Ff as getHomeStructuredData,
-  Bf as getPageMetaTags,
+  Vf as getCanonicalUrl,
+  Bf as getFAQStructuredData,
+  Nf as getHomeStructuredData,
+  jf as getPageMetaTags,
   _p as getServiceStructuredData,
-  Nf as getServicesStructuredData,
-  Lf as getUseCasesStructuredData,
+  Lf as getServicesStructuredData,
+  Wf as getUseCasesStructuredData,
+  vf as initAnalytics,
   Bn as useColorMode,
   ee as useColors,
   Ri as useComponentColors,
   xf as useComponentVariant,
-  Nh as useContrastColors,
+  Lh as useContrastColors,
   bf as useContrastPair,
   Id as useSurface
 };

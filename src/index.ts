@@ -19,3 +19,4 @@ export * from './types/service';
 
 // Utils
 export * from './utils/seo';
+export { analytics, initAnalytics } from './utils/analytics';

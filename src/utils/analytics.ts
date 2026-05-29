@@ -165,8 +165,11 @@ class AI4UAnalytics {
   trackPageView(pageName: string, customData?: Record<string, any>) {
     if (!this.isGALoaded) return;
 
+    const gaId = (window as typeof window & { __AI4U_GA_ID__?: string }).__AI4U_GA_ID__;
+    if (!gaId) return;
+
     try {
-      window.gtag?.('config', 'G-44D5SE9KCR', {
+      window.gtag?.('config', gaId, {
         page_title: `${pageName} | AI4U`,
         page_location: window.location.href,
         ...customData
@@ -197,3 +200,16 @@ class AI4UAnalytics {
 // Export singleton instance
 export const analytics = new AI4UAnalytics();
 export default analytics;
+
+/**
+ * Call once in the app root (e.g. layout.tsx) to set the tenant's GA measurement ID.
+ * Without calling this, trackPageView is a no-op.
+ *
+ * @example
+ * // app/layout.tsx
+ * initAnalytics(process.env.NEXT_PUBLIC_GA_ID)
+ */
+export function initAnalytics(gaId: string | undefined) {
+  if (typeof window === 'undefined' || !gaId) return;
+  (window as typeof window & { __AI4U_GA_ID__?: string }).__AI4U_GA_ID__ = gaId;
+}

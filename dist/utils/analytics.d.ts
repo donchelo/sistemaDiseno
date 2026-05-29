@@ -21,3 +21,12 @@ declare class AI4UAnalytics {
 }
 export declare const analytics: AI4UAnalytics;
 export default analytics;
+/**
+ * Call once in the app root (e.g. layout.tsx) to set the tenant's GA measurement ID.
+ * Without calling this, trackPageView is a no-op.
+ *
+ * @example
+ * // app/layout.tsx
+ * initAnalytics(process.env.NEXT_PUBLIC_GA_ID)
+ */
+export declare function initAnalytics(gaId: string | undefined): void;

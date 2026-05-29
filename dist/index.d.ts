@@ -8,3 +8,4 @@ export * from './context/ThemeContext';
 export * from './context/SurfaceContext';
 export * from './types/service';
 export * from './utils/seo';
+export { analytics, initAnalytics } from './utils/analytics';
