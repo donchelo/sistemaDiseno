@@ -1,302 +1,6 @@
-const e = {
-  mintCream: "#EAF4EB",
-  // Fondo de página — cálido, natural
-  erieBlack: "#171717",
-  // Texto primario, superficies oscuras
-  hotOrange: "#FF6E00",
-  // Energía, CTAs, danger/error
-  moderateBlue: "#3DAED1",
-  // Tecnología, info, success
-  cadetGray: "#94989B",
-  // Texto secundario, captions, bordes
-  white: "#FFFFFF",
-  // Superficies elevadas (cards)
-  black: "#171717",
-  // Alias → Erie Black (backward compat)
-  // Escala de grises internos (uso en MUI internals)
-  gray: {
-    50: "#F9F9F9",
-    100: "#F5F5F5",
-    200: "#E5E5E5",
-    300: "#D4D4D4",
-    400: "#A3A3A3",
-    500: "#737373",
-    600: "#525252",
-    700: "#404040",
-    800: "#2A2A2A",
-    900: "#171717"
-    // Erie Black
-  },
-  // Tints semánticos
-  tints: {
-    hotOrange5: "rgba(255, 110, 0, 0.05)",
-    hotOrange8: "rgba(255, 110, 0, 0.08)",
-    hotOrange30: "rgba(255, 110, 0, 0.30)",
-    moderateBlue4: "rgba(61, 174, 209, 0.04)",
-    moderateBlue8: "rgba(61, 174, 209, 0.08)",
-    moderateBlue15: "rgba(61, 174, 209, 0.15)",
-    erieBlack8: "rgba(23, 23, 23, 0.08)",
-    erieBlack10: "rgba(23, 23, 23, 0.10)",
-    erieBlack20: "rgba(23, 23, 23, 0.20)",
-    erieBlack30: "rgba(23, 23, 23, 0.30)",
-    mintCream60: "rgba(234, 244, 235, 0.60)"
-  },
-  // Semántica (inversión crítica de marca)
-  // orange = error/danger   ← NO usar rojo
-  // blue   = success/info   ← NO usar verde
-  semantic: {
-    success: "#3DAED1",
-    danger: "#FF6E00",
-    info: "#3DAED1",
-    warning: "#FF6E00"
-  },
-  // Tamaprint — paleta de cliente (Tamaprint es cliente histórico de AI4U).
-  // Slot oficial dentro del DS para mantener consistencia en proyectos Tamaprint
-  // (Mission Control, login, dashboards internos, cotizador).
-  tamaprint: {
-    primary: "#00ADEF",
-    // azul corporativo Tamaprint
-    primaryDark: "#0082C8",
-    primaryLight: "#33BFFF",
-    dark: "#231F20",
-    primary8: "rgba(0, 173, 239, 0.08)",
-    primary15: "rgba(0, 173, 239, 0.15)",
-    primary25: "rgba(0, 173, 239, 0.25)",
-    primary40: "rgba(0, 173, 239, 0.40)"
-  },
-  // Slate scale (superficies de dashboards de monitoreo).
-  // Complementa a `gray` (neutro) cuando se necesita un tinte azul-frío.
-  slate: {
-    50: "#F8FAFC",
-    100: "#F1F5F9",
-    200: "#E2E8F0",
-    300: "#CBD5E1",
-    400: "#94A3B8",
-    500: "#64748B",
-    600: "#475569",
-    700: "#334155",
-    800: "#1E293B",
-    900: "#0F172A"
-  },
-  // Telemetría (dashboards de monitoreo — NO marca)
-  // Semántica universal de operación: verde=ok, rojo=falla, ámbar=transición.
-  // Usar SOLO en superficies de dashboard/observabilidad, nunca en CTAs ni feedback de marca.
-  telemetry: {
-    online: "#22C55E",
-    // verde — servicio operativo
-    offline: "#EF4444",
-    // rojo — servicio caído
-    starting: "#F59E0B",
-    // ámbar — en arranque/transición
-    checking: "#94A3B8",
-    // gris azulado — verificando
-    idle: "#A3A3A3"
-    // gris — inactivo/desconocido
-  },
-  // Backward compat — accentColors (legacy)
-  accentColors: {
-    orange: "#FF6E00",
-    mint: "#EAF4EB",
-    // Mint Cream — NO es el VOLT verde
-    blue: "#3DAED1",
-    cadetGray: "#94989B"
-  },
-  accent: "#FF6E00",
-  // Semantic aliases (legacy)
-  success: "#3DAED1",
-  error: "#FF6E00",
-  warning: "#FF6E00",
-  info: "#3DAED1"
-}, t = {
-  light: {
-    background: e.mintCream,
-    // #EAF4EB — cálido
-    surface: e.white,
-    // #FFFFFF — cards elevadas
-    text: {
-      primary: e.erieBlack,
-      // #171717
-      secondary: e.cadetGray,
-      // #94989B
-      disabled: e.gray[400]
-    },
-    border: e.tints.erieBlack10,
-    divider: e.tints.erieBlack10
-  },
-  dark: {
-    background: e.erieBlack,
-    // #171717
-    surface: e.gray[800],
-    // #2A2A2A — cards elevadas en dark
-    text: {
-      primary: e.white,
-      secondary: e.cadetGray,
-      disabled: e.gray[600]
-    },
-    border: "rgba(255, 255, 255, 0.12)",
-    divider: "rgba(255, 255, 255, 0.08)"
-  }
-}, b = {
-  // Superficies de marca
-  mintCream: {
-    background: e.mintCream,
-    surface: e.white,
-    text: {
-      primary: e.erieBlack,
-      secondary: e.cadetGray,
-      disabled: e.gray[400]
-    },
-    border: e.tints.erieBlack10,
-    divider: e.tints.erieBlack10,
-    effectiveMode: "light"
-  },
-  black: {
-    background: e.erieBlack,
-    surface: e.gray[800],
-    text: {
-      primary: e.white,
-      secondary: e.cadetGray,
-      disabled: e.gray[600]
-    },
-    border: "rgba(255, 255, 255, 0.12)",
-    divider: "rgba(255, 255, 255, 0.08)",
-    effectiveMode: "dark"
-  },
-  white: {
-    background: e.white,
-    surface: e.white,
-    text: {
-      primary: e.erieBlack,
-      secondary: e.cadetGray,
-      disabled: e.gray[400]
-    },
-    border: e.tints.erieBlack10,
-    divider: e.tints.erieBlack10,
-    effectiveMode: "light"
-  },
-  orange: {
-    background: e.hotOrange,
-    surface: e.hotOrange,
-    text: {
-      primary: e.white,
-      secondary: "rgba(255,255,255,0.75)",
-      disabled: "rgba(255,255,255,0.45)"
-    },
-    border: "rgba(255,255,255,0.30)",
-    divider: "rgba(255,255,255,0.20)",
-    effectiveMode: "dark"
-  },
-  // Dashboard claro — superficie operativa con tinte slate (Mission Control).
-  dashboard: {
-    background: "#F1F5F9",
-    // slate-100
-    surface: "#FFFFFF",
-    text: {
-      primary: "#0F172A",
-      // slate-900
-      secondary: "#64748B",
-      // slate-500
-      disabled: "#94A3B8"
-      // slate-400
-    },
-    border: "#E2E8F0",
-    // slate-200
-    divider: "#E2E8F0",
-    effectiveMode: "light"
-  },
-  // Dashboard oscuro — superficie para sidebars/topbars de monitoreo.
-  dashboardDark: {
-    background: "#171717",
-    // erieBlack
-    surface: "#1E1E1E",
-    text: {
-      primary: "#F1F5F9",
-      // slate-100
-      secondary: "#94A3B8",
-      // slate-400
-      disabled: "#64748B"
-      // slate-500
-    },
-    border: "rgba(255, 255, 255, 0.07)",
-    divider: "rgba(255, 255, 255, 0.12)",
-    effectiveMode: "dark"
-  },
-  // Alias legacy — 'volt' renombrado internamente a mintCream
-  volt: {
-    background: e.mintCream,
-    surface: e.white,
-    text: {
-      primary: e.erieBlack,
-      secondary: e.cadetGray,
-      disabled: e.gray[400]
-    },
-    border: e.tints.erieBlack10,
-    divider: e.tints.erieBlack10,
-    effectiveMode: "light"
-  }
-}, i = {
-  button: {
-    primary: {
-      background: e.erieBlack,
-      text: e.white,
-      hover: e.gray[800]
-    },
-    secondary: {
-      background: "transparent",
-      text: e.erieBlack,
-      border: e.erieBlack,
-      hover: e.erieBlack,
-      hoverText: e.white
-    },
-    accent: {
-      background: e.hotOrange,
-      text: e.white,
-      hover: "#E66400"
-    },
-    ghost: {
-      background: "transparent",
-      text: e.erieBlack,
-      hover: e.tints.erieBlack8
-    },
-    outline: {
-      background: "transparent",
-      text: e.erieBlack,
-      border: e.tints.erieBlack20,
-      hover: e.tints.erieBlack8
-    },
-    minimal: {
-      background: "transparent",
-      text: e.erieBlack,
-      border: "none",
-      hover: e.tints.erieBlack8
-    }
-  },
-  card: {
-    light: {
-      background: e.mintCream,
-      text: e.erieBlack,
-      border: e.tints.erieBlack10
-    },
-    elevated: {
-      background: e.white,
-      text: e.erieBlack,
-      border: e.tints.erieBlack10
-    },
-    dark: {
-      background: e.erieBlack,
-      text: e.white,
-      border: "rgba(255,255,255,0.08)"
-    },
-    blue: {
-      background: e.tints.moderateBlue8,
-      text: e.erieBlack,
-      border: e.tints.moderateBlue15
-    }
-  }
-}, p = (r) => t[r], h = (r) => ({
-  ...t[r],
-  components: i
-}), a = {
+import { a as t, A as r } from "../palette-uGOLprhd.js";
+import { C as h, S as u, u as y, b as T } from "../palette-uGOLprhd.js";
+const n = {
   // Familias de fuentes
   fontFamily: {
     primary: '"Red Hat Display", sans-serif',
@@ -352,7 +56,7 @@ const e = {
     wider: "0.1em",
     widest: "0.2em"
   }
-}, n = {
+}, i = {
   // Títulos "DECONSTRUCTED"
   display: {
     giant: {
@@ -384,21 +88,21 @@ const e = {
       fontWeight: 900,
       lineHeight: 0.8,
       letterSpacing: "-0.06em",
-      fontFamily: a.fontFamily.code
+      fontFamily: n.fontFamily.code
       // Monospace for numbers
     }
   },
   // Etiquetas industriales (Abloh Signature)
   label: {
     main: {
-      fontFamily: a.fontFamily.code,
+      fontFamily: n.fontFamily.code,
       fontSize: "0.875rem",
       fontWeight: 400,
       letterSpacing: "0.1em",
       opacity: 0.8
     },
     secondary: {
-      fontFamily: a.fontFamily.code,
+      fontFamily: n.fontFamily.code,
       fontSize: "0.75rem",
       fontWeight: 400,
       letterSpacing: "0.05em",
@@ -435,7 +139,7 @@ const e = {
       letterSpacing: "0.15em"
     },
     caption: {
-      fontSize: a.fontSize.xs,
+      fontSize: n.fontSize.xs,
       fontWeight: 400,
       lineHeight: 1.2
     },
@@ -443,10 +147,10 @@ const e = {
       fontSize: "0.875rem",
       fontWeight: 400,
       lineHeight: 1.4,
-      fontFamily: a.fontFamily.code
+      fontFamily: n.fontFamily.code
     }
   }
-}, x = {
+}, p = {
   // Clases de texto para uso directo
   text: {
     display: "font-black leading-none tracking-tighter",
@@ -454,7 +158,7 @@ const e = {
     body: "font-normal leading-relaxed",
     label: "font-mono text-sm leading-normal tracking-widest"
   }
-}, o = {
+}, a = {
   // Espaciado base (8px)
   base: 8,
   // Escala de espaciado (más generosa)
@@ -535,7 +239,7 @@ const e = {
     cardMd: 320,
     cardLg: 400
   }
-}, y = {
+}, x = {
   // Espaciado interno de componentes (más generoso) - UNIDADES MUI (x8px)
   padding: {
     button: {
@@ -587,7 +291,7 @@ const e = {
       // 96px en desktop grande
     }
   }
-}, d = {
+}, o = {
   none: "0 0 #0000",
   sm: "0 1px 2px rgba(23, 23, 23, 0.05)",
   default: "0 4px 12px rgba(23, 23, 23, 0.08)",
@@ -605,7 +309,7 @@ const e = {
     glow: "none"
     // Sin glow — Brand Book §sombras
   }
-}, c = {
+}, m = {
   width: {
     none: "0",
     thin: "1px",
@@ -631,7 +335,7 @@ const e = {
   popover: 1060,
   tooltip: 1070,
   toast: 1080
-}, g = {
+}, s = {
   duration: {
     fast: "100ms",
     normal: "200ms",
@@ -643,77 +347,77 @@ const e = {
     // Industrial step feel
     easeInOut: "cubic-bezier(0.4, 0, 0.2, 1)"
   }
-}, s = {
+}, g = {
   xs: 0,
   sm: 600,
   md: 960,
   lg: 1280,
   xl: 1920
-}, m = {
-  palette: e,
+}, d = {
+  palette: r,
   contrast: t,
-  typography: a,
-  textVariants: n,
-  spacing: o,
-  shadows: d,
-  borders: c,
+  typography: n,
+  textVariants: i,
+  spacing: a,
+  shadows: o,
+  borders: m,
   zIndex: l,
-  transitions: g,
-  breakpoints: s
-}, f = (r) => ({
-  ...m,
+  transitions: s,
+  breakpoints: g
+}, f = (e) => ({
+  ...d,
   colors: {
-    mode: r,
+    mode: e,
     primary: {
-      main: e.black,
-      contrastText: e.white
+      main: r.black,
+      contrastText: r.white
     },
     background: {
-      default: t[r].background,
-      paper: t[r].surface
+      default: t[e].background,
+      paper: t[e].surface
     },
     text: {
-      primary: t[r].text.primary,
-      secondary: t[r].text.secondary,
-      disabled: t[r].text.disabled
+      primary: t[e].text.primary,
+      secondary: t[e].text.secondary,
+      disabled: t[e].text.disabled
     },
-    divider: t[r].divider,
-    border: t[r].border
+    divider: t[e].divider,
+    border: t[e].border
   },
   // Helpers para acceso rápido
   helpers: {
     border: {
-      primary: t[r].border,
-      secondary: t[r].divider
+      primary: t[e].border,
+      secondary: t[e].divider
     },
     background: {
-      primary: t[r].background,
-      secondary: r === "light" ? e.gray[50] : e.gray[900]
+      primary: t[e].background,
+      secondary: e === "light" ? r.gray[50] : r.gray[900]
     },
     text: {
-      primary: t[r].text.primary,
-      secondary: t[r].text.secondary
+      primary: t[e].text.primary,
+      secondary: t[e].text.secondary
     }
   }
 });
 export {
-  m as AI4U_DESIGN_TOKENS,
-  e as AI4U_PALETTE,
-  c as BORDER_TOKENS,
-  s as BREAKPOINT_TOKENS,
-  y as COMPONENT_SPACING,
-  i as COMPONENT_VARIANTS,
+  d as AI4U_DESIGN_TOKENS,
+  r as AI4U_PALETTE,
+  m as BORDER_TOKENS,
+  g as BREAKPOINT_TOKENS,
+  x as COMPONENT_SPACING,
+  h as COMPONENT_VARIANTS,
   t as CONTRAST_PAIRS,
-  d as SHADOW_TOKENS,
-  o as SPACING_TOKENS,
-  b as SURFACE_PRESETS,
-  n as TEXT_VARIANTS,
-  g as TRANSITION_TOKENS,
-  a as TYPOGRAPHY_TOKENS,
-  x as TYPOGRAPHY_UTILITIES,
+  o as SHADOW_TOKENS,
+  a as SPACING_TOKENS,
+  u as SURFACE_PRESETS,
+  i as TEXT_VARIANTS,
+  s as TRANSITION_TOKENS,
+  n as TYPOGRAPHY_TOKENS,
+  p as TYPOGRAPHY_UTILITIES,
   l as Z_INDEX_TOKENS,
   f as createAI4UTokens,
-  h as useComponentColors,
-  p as useContrastColors
+  y as useComponentColors,
+  T as useContrastColors
 };
 //# sourceMappingURL=index.js.map

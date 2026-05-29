@@ -26,6 +26,7 @@ export default defineConfig(({ command }) => {
           entry: {
             index: resolve(__dirname, 'src/index.ts'),
             'tokens/index': resolve(__dirname, 'src/tokens/index.ts'),
+            'changelog/index': resolve(__dirname, 'src/changelog/index.ts'),
           },
           formats: ['es', 'cjs'],
           fileName: (format, entryName) =>

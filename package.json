@@ -17,6 +17,11 @@
       "require": "./dist/tokens/index.cjs",
       "types": "./dist/tokens/index.d.ts"
     },
+    "./changelog": {
+      "import": "./dist/changelog/index.js",
+      "require": "./dist/changelog/index.cjs",
+      "types": "./dist/changelog/index.d.ts"
+    },
     "./styles": "./dist/styles/base.css"
   },
   "files": [
